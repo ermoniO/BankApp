@@ -21,12 +21,12 @@ public class BankAccount {
      public double getSavingsBalance() {
         return savingsBalance;
      }
-//Create constructors for withdrawals for checking and savings account and added condition to prevent overdrafts
+//Create method for withdrawals for checking and savings account and added condition to prevent overdrafts
     public void checkingWithdrawal(double withdrawalAmount) {
         if (checkingBalance < withdrawalAmount){
             System.out.println("Your account is insufficient for this transaction");
             if(savingsBalance > withdrawalAmount) {
-                System.out.println("You need to do a balance transfer first");
+                System.out.println("You need to do a balance transfer from your savings account first");
             }
         } else if (checkingBalance > withdrawalAmount){
             checkingBalance -= withdrawalAmount;
@@ -36,7 +36,7 @@ public class BankAccount {
         if (savingsBalance < withdrawalAmount){
             System.out.println("Your account is insufficient for this transaction");
             if( checkingBalance > withdrawalAmount) {
-                System.out.println("You need to do a balance transfer first");
+                System.out.println("You need to do a balance transfer from your checking account first");
             }
         } else if (savingsBalance > withdrawalAmount){
             savingsBalance -= withdrawalAmount;
@@ -44,7 +44,40 @@ public class BankAccount {
 
     }
 
-    //Create ___ to prevent overdraft of account
+    //Deduct amount from the savings and add it to the checking
+    public void transferToChecking(double transferAmount) {
+        if (savingsBalance > transferAmount) {
+            savingsBalance -= transferAmount;
+            checkingBalance += transferAmount;
+            System.out.println("Your transaction is completed");
+            System.out.println("Your new savings balance is: " + getSavingsBalance());
+            System.out.println("Your new checking balance is: " + getCheckingBalance());
+        } else if (savingsBalance < transferAmount) {
+            System.out.println("Your account is insufficient for this transaction");
+        }
+    }
 
+    public void transferToSavings(double transferAmount) {
+        if (checkingBalance > transferAmount) {
+            checkingBalance -= transferAmount;
+            savingsBalance += transferAmount;
+            System.out.println("Your transaction is completed");
+            System.out.println("Your new checking balance is: " + getCheckingBalance());
+            System.out.println("Your new savings balance is: " + getSavingsBalance());
+        } else if (checkingBalance < transferAmount) {
+            System.out.println("Your account is insufficient for this transaction");
+        }
+    }
+
+    //Create deposit method for checking and savings account
+    public void checkingDeposit(double depositAmount) {
+        checkingBalance += depositAmount;
+        System.out.println("Your new checking balance is: " + getCheckingBalance());
+    }
+
+    public void savingsDeposit(double depositAmount) {
+        savingsBalance += depositAmount;
+        System.out.println("Your new checking balance is: " + getSavingsBalance());
+    }
 
 }
