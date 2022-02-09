@@ -10,6 +10,7 @@ public class BankAccount {
     public BankAccount(double checkingOpeningDeposit, double savingsOpeningDeposit) {
         this.checkingOpeningDeposit = checkingOpeningDeposit;
         this.savingsOpeningDeposit = savingsOpeningDeposit;
-
+        checkingBalance += this.checkingOpeningDeposit;
+        savingsOpeningDeposit += this.savingsOpeningDeposit;
     }
 }
