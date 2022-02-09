@@ -13,7 +13,7 @@ public class BankAccount {
         checkingBalance += this.checkingOpeningDeposit;
         savingsBalance += this.savingsOpeningDeposit;
     }
-    //Create methods to
+    //Create methods to get the checking and savings balance
 
     public double getCheckingBalance() {
         return checkingBalance;
@@ -21,9 +21,12 @@ public class BankAccount {
      public double getSavingsBalance() {
         return savingsBalance;
      }
-
-    
-
-
+//Create constructors for withdrawals for checking and savings account
+    public void checkingWithdrawal(double withdrawalAmount) {
+        checkingBalance -= withdrawalAmount;
+    }
+    public void savingsWithdrawal(double savingsWithdrawalAmount) {
+        savingsBalance -= savingsWithdrawalAmount;
+    }
 
 }
